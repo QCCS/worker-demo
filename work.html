@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<button id="work">worker加载</button>
+
+</body>
+<script type="text/javascript">
+    var worker = null;
+    function testRun() {
+        worker = new Worker('w.js');
+        worker.onmessage = function (event) {
+            console.log('收到子线程的数据：' + event.data);
+        }
+        worker.postMessage("开始加载");
+        console.log("主线程代码")
+    }
+    work.onclick = testRun;
+</script>
+</html>
+
